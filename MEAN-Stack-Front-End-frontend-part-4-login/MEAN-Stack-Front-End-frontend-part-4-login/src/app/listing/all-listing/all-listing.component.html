@@ -1,0 +1,7 @@
+<ul class="listings" *ngIf="listings$ | async as listings">
+  <li *ngFor="let listing of listings">
+    <h4>{{ listing.username }}</h4>
+    <h5>Price: {{ listing.username }} | Locality: {{ listing.email }}</h5>
+    <a [routerLink]="listing.id">View Profile</a>
+  </li>
+</ul>

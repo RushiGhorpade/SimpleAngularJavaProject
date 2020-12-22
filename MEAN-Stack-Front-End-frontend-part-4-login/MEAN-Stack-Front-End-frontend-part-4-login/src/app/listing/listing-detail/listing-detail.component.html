@@ -1,0 +1,47 @@
+<div class="info-wrrap">
+ 
+  <h4> {{ listing.username }}</h4>
+
+  <h5> {{listing.email }}</h5>
+  
+  <div><img src={{listing.file}}   width="300" height="300">   </div>
+   
+  <div class="example-button-row">
+    <button  mat-raised-button color="primary"  (click) ="showEdit()" >  
+    <span class="material-icons"> edit</span></button>
+  <button  (click)="removeListing()" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+    <span class="material-icons">     
+delete_sweep
+</span>
+  </button>
+</div>
+ 
+ </div>
+
+ <div class="form-wrrap" *ngIf="showForm">
+  <h3>Edit Listing</h3>
+  <form [formGroup]="editListingForm" (ngSubmit)="editListing()">
+    <input
+      type="text"
+      placeholder="Enter username"
+      [(ngModel)]="listing.username"
+      formControlName="username"
+    />
+    <input
+      type="email"
+      placeholder="Enter email;"
+      [(ngModel)]="listing.email"
+      formControlName="email"
+    />
+    <input type="file" id="myfileinput"  (change)="changeListener($event)"
+        placeholder="Enter Your File"
+        [(ngModel)]="listing.file"
+     formControlName="file" />
+
+    <input
+      type="submit"
+      value="Add Listing"
+      [disabled]="!editListingForm.valid"
+    />
+  </form>
+</div>
